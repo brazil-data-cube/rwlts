@@ -10,10 +10,8 @@ list_collections <- function(..., base_url = "http://brazildatacube.dpi.inpe.br/
   if (!missing(base_url))
     stop(!is.character(base_url))
 
-  url <- paste0(base_url, "/list_collections")
-
   tryCatch({
-    response_obj <- httr::GET(url, ...)
+    response_obj <- httr::GET(paste0(base_url, "/list_collections"), ...)
   },
   error = function(e) {
     stop("Error in requisition: ", e)
@@ -21,7 +19,6 @@ list_collections <- function(..., base_url = "http://brazildatacube.dpi.inpe.br/
 
   httr::content(response_obj)
 }
-
 
 
 #' @title ...
@@ -35,20 +32,18 @@ list_collections <- function(..., base_url = "http://brazildatacube.dpi.inpe.br/
 #'
 #' @export
 get_trajectory <- function(latitude, longitude, collections, ...,
-                           base_url = "http://brazildatacube.dpi.inpe.br/dev/wlts") {
+                           base_url = "http://brazildatacube.dpi.inpe.br/dev/wlts/") {
 
   # TODO: check parameters
 
   if (latitude < -90 ||  latitude > 90)
-    stop("latitude is out of range (-90,90)")
+    stop("latitude is out of range (-90, 90)")
 
   if (longitude < -180 || longitude > 180)
-    stop("longitude is out of range (-180,180)")
-
+    stop("longitude is out of range (-180, 180)")
 
   tryCatch({
-    response_obj <-  httr::GET(base_url,
-                               path = '/dev/wlts/trajectory',
+    response_obj <-  httr::GET(paste0(base_url, '/trajectory'),
                                query = list("latitude"    = latitude,
                                             "longitude"   = longitude,
                                             "collections" = collections))
@@ -57,18 +52,27 @@ get_trajectory <- function(latitude, longitude, collections, ...,
     stop("Error in requisition: ", e)
   })
 
-  content_req <- httr::content(response_obj)
+  httr::content(response_obj)
+}
 
-  content_req
 
-  #
-  # return(
-  #   data.frame(
-  #     httr::content(
-  #       httr::GET(base_url, path = '/dev/wlts/trajectory',
-  #                 query = list('latitude' = latitude, 'longitude' = longitude, 'collections'=collections))
-  #     )$result
-  #   )
-  # )
+#' @title ...
+#'
+#' @param collection_id a \code{character} ...
+#'
+#' @return
+#'
+#' @export
+describe_collection <- function(collection_id, ..., 
+                                base_url = "http://brazildatacube.dpi.inpe.br/dev/wlts/") {
 
+  tryCatch({
+    response_obj <-  httr::GET(paste0(base_url, '/describe_collection'),
+                               query = list("collection_id" = collection_id))
+  },
+  error = function(e) {
+    stop("Error in requisition: ", e)
+  })
+  
+  httr::content(response_obj)
 }
