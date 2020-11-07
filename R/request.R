@@ -5,10 +5,10 @@
 #' @return
 #'
 #'
-request <- function(URL, ...) {
+request <- function(URL, query, ...) {
   
   tryCatch({
-    response_obj <- httr::GET(URL, ...)
+    response_obj <- httr::GET(URL, query = query, ...)
   },
   error = function(e) {
     stop("Error in requisition: ", e)
@@ -26,7 +26,6 @@ request <- function(URL, ...) {
 #'
 #' @internal
 .build_url <- function(URL, path, query = NULL, ...) {
-  
-  # TODO: implment an URL builder
-  return(invisible(URL))
+  url <- paste0(URL, path)
+  url <- gsub("/$", "", url)
 }

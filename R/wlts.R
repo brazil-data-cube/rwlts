@@ -32,13 +32,10 @@ list_collections <- function(URL, ...) {
 describe_collection <- function(URL, ...) {
 
   if (missing(URL))
-    stop("The WLTS URL service must be provided.")
+    stop("WLTS URL service must be provided.")
 
-  final_url <- .build_url(URL, path = '/describe_collection', 
-                                    query = list("collection_id" = collection_id))
-
-  content <- request(final_url)
-  
+  final_url <- .build_url(URL, path = "/describe_collection")
+  content <- request(final_url, query = list("collection_id" = collection_id))
 }
 
 #' @title ...
@@ -54,25 +51,22 @@ describe_collection <- function(URL, ...) {
 get_trajectory <- function(URL, latitude, longitude, collections = NULL, 
                             start_date = NULL, end_date = NULL, ...) {
 
+  if (missing(URL))
+    stop("WLTS URL service must be provided.")
+
+  .check_location(latitude, longitude)
+
+  if (any(!missing(start_date) & !missing(end_date)))
+    datetime <- .parse_datetime(start_date, end_date)
   
-  
-  .parse_location(latitude, longitude)
+  query <- list(datetime$start_date, datetime$end_date, latitude, longitude, collections)
+  names(query) <- c("start_date", "end_date", "latitude", "longitude", "collections")
+  query <- .drop_null(query)
 
-  if (all(!missing(start_date) & !missing(end_date)))
-    .parser_datetime()
-
-  final_url <- .build_url(URL, path  = "/trajectory", 
-                          query = list("latitude"    = latitude,
-                                       "longitude"   = longitude,
-                                       "collections" = collections,
-                                       "start_date"  = start_date,
-                                       "end_date"    = end_date))
-
-  content <- request(final_url, ...)
+  final_url <- .build_url(URL, path  = "/trajectory")
+  content <- request(final_url, query, ...)
     
   structure(query = content$query, 
-            result = .build_tibble(content$result),
+            result = .build_result_tibble(content$result),
             class = "wlts")
-
-  httr::content(response_obj)
 }

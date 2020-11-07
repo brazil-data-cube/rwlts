@@ -1,10 +1,10 @@
-# resultado da requisição -> {
-# query: collection, start_date, end_date, latitude, longitude
-# result: {'trajectory': [{class: 'Floresta', 'collection': terraclass, date: 2004}]}
-# }
-
-
+#' @title ...
+#'
+#' @param a \code{character} ...
+#'
+#' @return
+#'
+#'
 .build_result_tibble <- function(result) {
-  do.call(rbind, sapply(result$trajectory, tibble::as_tibble, simplify = FALSE))
+  result_tibble <- do.call(rbind, sapply(result$trajectory, tibble::as_tibble, simplify = FALSE))
 }
-
