@@ -41,3 +41,13 @@
 
   .check_datetime(start_date, end_date)
 }
+
+#' @title ...
+#'
+#' @param elements \code{character} ...
+#'
+#' @return
+.drop_na <- function(elements) {
+  idx <- which(sapply(elements, is.null))
+  elements[-idx]
+}

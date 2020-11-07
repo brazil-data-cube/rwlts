@@ -1,12 +1,14 @@
 #' @title
 #'
-#' @param a \code{character} ...
+#' @param URL \code{character} ...
+#' @param query \code{character} ...
+#' @param ... \code{character} ...
 #'
 #' @return
 #'
 #'
-request <- function(URL, query, ...) {
-  
+request <- function(URL, ..., query = NULL) {
+
   tryCatch({
     response_obj <- httr::GET(URL, query = query, ...)
   },
@@ -19,13 +21,13 @@ request <- function(URL, query, ...) {
 
 #' @title
 #'
-#' @param
-#' @param
-#' @param
+#' @param URL \code{character} ...
+#' @param path \code{character} ...
+#' @param query \code{character} ...
+#' @param ... \code{character} ...
 #'
 #'
-#' @internal
-.build_url <- function(URL, path, query = NULL, ...) {
+.build_url <- function(URL, path, ...) {
   url <- paste0(URL, path)
   url <- gsub("/$", "", url)
 }
