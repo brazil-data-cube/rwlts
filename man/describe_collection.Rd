@@ -20,3 +20,11 @@ a named \code{list} with the metadata of data collection.
 \description{
 Retrieves the metadata of a given data collection.
 }
+\examples{
+\donttest{
+ wlts_bdc <- "http://brazildatacube.dpi.inpe.br/dev/wlts/"
+
+ describe_collection(wlts_bdc, "deter_amz_legal")
+}
+
+}

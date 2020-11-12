@@ -4,7 +4,7 @@
 \alias{.build_url}
 \title{Create a valid URL}
 \usage{
-.build_url(URL, path, query = NULL)
+.build_url(URL, path, query = NULL, names_list = NULL)
 }
 \arguments{
 \item{URL}{a \code{character} URL of the WLTS Service.}
@@ -12,6 +12,9 @@
 \item{path}{a \code{character} with URL path.}
 
 \item{query}{a \code{list} A named list with HTTP query parameters.}
+
+\item{names_list}{a \code{character} vector with the names of query
+attributes.}
 }
 \value{
 a \code{list} with \code{url} and \code{query} attributes.
