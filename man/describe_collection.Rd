@@ -2,20 +2,21 @@
 % Please edit documentation in R/wlts.R
 \name{describe_collection}
 \alias{describe_collection}
-\title{...}
+\title{Describe Collection}
 \usage{
 describe_collection(URL, collection_id, ...)
 }
 \arguments{
-\item{URL}{a \code{character} ...}
+\item{URL}{a \code{character} URL of the WLTS Service.}
 
-\item{collection_id}{a \code{character} ...}
+\item{collection_id}{a \code{character} with identifier (name) of a
+collection.}
 
-\item{...}{a \code{character} ...}
+\item{...}{a \code{list} Parameters to httr::GET function.}
 }
 \value{
-
+a named \code{list} with the metadata of data collection.
 }
 \description{
-...
+Retrieves the metadata of a given data collection.
 }

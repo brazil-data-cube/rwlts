@@ -1,9 +1,18 @@
-#' @title ...
+#' @title List Collections
 #'
-#' @param a \code{character} ...
-#' @param ... \code{character} ...
+#' @description Retrieves the list of available data collections.
 #'
-#' @return
+#' @param URL         a \code{character} URL of the WLTS Service.
+#' @param ...         a \code{list} Parameters to httr::GET function
+#'
+#' @examples
+#' \donttest{
+#'  wlts_bdc <- "http://brazildatacube.dpi.inpe.br/dev/wlts/"
+#'
+#'  list_collections(wlts_bdc)
+#' }
+#'
+#' @return a \code{character} vector with the available data collections.
 #'
 #' @export
 list_collections <- function(URL, ...) {
@@ -12,19 +21,29 @@ list_collections <- function(URL, ...) {
     stop("The WLTS URL service must be provided.")
 
   # is this best way?
-  final_url <- .build_url(URL, path = "/list_collections")
+  url_obj <- .build_url(URL, path = "/list_collections")
 
-  content <- request(final_url, ...)
+  content <- request(url_obj$url, ...)
   unlist(content, use.names = FALSE)
 }
 
-#' @title ...
+#' @title Describe Collection
 #'
-#' @param URL a \code{character} ...
-#' @param collection_id a \code{character} ...
-#' @param ... a \code{character} ...
+#' @description Retrieves the metadata of a given data collection.
 #'
-#' @return
+#' @param URL           a \code{character} URL of the WLTS Service.
+#' @param collection_id a \code{character} with identifier (name) of a
+#'  collection.
+#' @param ...           a \code{list} Parameters to httr::GET function.
+#'
+#' @examples
+#' \donttest{
+#'  wlts_bdc <- "http://brazildatacube.dpi.inpe.br/dev/wlts/"
+#'
+#'  describe_collection(wlts_bdc, "deter_amz_legal")
+#' }
+#'
+#' @return a named \code{list} with the metadata of data collection.
 #'
 #' @export
 describe_collection <- function(URL, collection_id, ...) {
@@ -32,20 +51,42 @@ describe_collection <- function(URL, collection_id, ...) {
   if (missing(URL))
     stop("WLTS URL service must be provided.")
 
-  final_url <- .build_url(URL, path = "/describe_collection")
-  content <- request(final_url, query = list("collection_id" = collection_id), ...)
+  url_obj <- .build_url(URL, path = "/describe_collection",
+                        query = list(collection_id),
+                        names_list = "collection_id")
+
+  content <- request(url_obj$url, query = url_obj$query, ...)
   content
 }
 
-#' @title ...
+#' @title Get Trajectory
 #'
-#' @param
-#' @param latitude     a \code{numeric} ...
-#' @param longitude    a \code{numeric} ...
-#' @param collections  a \code{character} ...
-#' @param ...          a \code{character} ...
+#' @description Retrieves the land use and cover trajectories from the data
+#'  collections given a location in space. The property \code{result} contains
+#'  the feature identifier information, class, time, and the collection
+#'  associated to the data item.
 #'
-#' @return
+#' @param URL          a \code{character} URL of the WLTS Service.
+#' @param latitude     a \code{numeric} vector corresponding to latitude in
+#'  WGS84 coordinate system.
+#' @param longitude    a \code{numeric} vector corresponding to longitude in
+#'  WGS84 coordinate system.
+#' @param collections  a \code{character} vector of identifier (name) of
+#'  collections delimited by comma.
+#' @param ...         a \code{list} Parameters to httr::GET function.
+#' @param query_info   a \code{bolean} flag, if true query information is
+#'  returned.
+#'
+#' @examples
+#' \donttest{
+#'  wlts_bdc <- "http://brazildatacube.dpi.inpe.br/dev/wlts/"
+#'
+#'  get_trajectory(wlts_bdc, latitude = c(-12, -11.01), longitude = c(-54, -54),
+#'                collections = "mapbiomas_amz_4_1")
+#' }
+#'
+#' @return a \code{object} of wlts class with query (if \code{query_info} is
+#'  provided) and a tibble with trajectory requested.
 #'
 #' @export
 get_trajectory <- function(URL,
@@ -68,7 +109,8 @@ get_trajectory <- function(URL,
 
   # build final url
   url_obj <- .build_url(URL, path  = "/trajectory",
-                        query = list(start_date, end_date, collections))
+                        query      = list(start_date, end_date, collections),
+                        names_list = c("start_date", "end_date", "collections"))
 
   # create a list of content
   list_content <- lapply(seq_along(latitude), function(i) {

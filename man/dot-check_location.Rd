@@ -2,18 +2,16 @@
 % Please edit documentation in R/utils.R
 \name{.check_location}
 \alias{.check_location}
-\title{...}
+\title{Validates the location of geographic coordinates}
 \usage{
 .check_location(latitude, longitude)
 }
 \arguments{
-\item{a}{\code{character} ...}
+\item{latitude}{\code{numeric} Latitude in WGS84 coordinate system.}
 
-\item{...}{\code{character} ...}
-}
-\value{
-
+\item{longitude}{\code{numeric} Longitude in WGS84 coordinate system.}
 }
 \description{
-...
+Checks if the values defined for the location are valid
+geographical coordinates and are within the range of values
 }

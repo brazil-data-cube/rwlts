@@ -2,20 +2,21 @@
 % Please edit documentation in R/request.R
 \name{request}
 \alias{request}
-\title{}
+\title{Make an HTTP request}
 \usage{
 request(URL, ..., query = NULL)
 }
 \arguments{
-\item{URL}{\code{character} ...}
+\item{URL}{\code{character} URL of the WLTS Service.}
 
-\item{...}{\code{character} ...}
+\item{...}{\code{character} Parameters to httr::GET function.}
 
-\item{query}{\code{character} ...}
+\item{query}{\code{list} A named list with HTTP query parameters.}
 }
 \value{
-
+a \code{object} response from httr package.
 }
 \description{
-
+makes an HTTP request along with HTTP query parameters
+for a web service.
 }

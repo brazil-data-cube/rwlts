@@ -2,18 +2,18 @@
 % Please edit documentation in R/wlts.R
 \name{list_collections}
 \alias{list_collections}
-\title{...}
+\title{List Collections}
 \usage{
 list_collections(URL, ...)
 }
 \arguments{
-\item{...}{\code{character} ...}
+\item{URL}{a \code{character} URL of the WLTS Service.}
 
-\item{a}{\code{character} ...}
+\item{...}{a \code{list} Parameters to httr::GET function}
 }
 \value{
-
+a \code{character} vector with the available data collections.
 }
 \description{
-...
+Retrieves the list of available data collections.
 }

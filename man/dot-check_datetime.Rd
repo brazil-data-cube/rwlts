@@ -2,18 +2,16 @@
 % Please edit documentation in R/utils.R
 \name{.check_datetime}
 \alias{.check_datetime}
-\title{...}
+\title{Validates the dates}
 \usage{
 .check_datetime(start_date, end_date)
 }
 \arguments{
-\item{a}{\code{character} ...}
+\item{start_date}{\code{character} Start date in RFC 3339 format}
 
-\item{...}{\code{character} ...}
-}
-\value{
-
+\item{end_date}{\code{character} End date in RFC 3339 format}
 }
 \description{
-...
+Checks if the dates are in RFC 3339 format and if they are in a
+ valid start and end date relationship
 }

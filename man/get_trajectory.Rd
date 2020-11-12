@@ -2,7 +2,7 @@
 % Please edit documentation in R/wlts.R
 \name{get_trajectory}
 \alias{get_trajectory}
-\title{...}
+\title{Get Trajectory}
 \usage{
 get_trajectory(
   URL,
@@ -11,21 +11,34 @@ get_trajectory(
   collections = NULL,
   start_date = NULL,
   end_date = NULL,
-  ...
+  ...,
+  query_info = FALSE
 )
 }
 \arguments{
-\item{latitude}{a \code{numeric} ...}
+\item{URL}{a \code{character} URL of the WLTS Service.}
 
-\item{longitude}{a \code{numeric} ...}
+\item{latitude}{a \code{numeric} vector corresponding to latitude in
+WGS84 coordinate system.}
 
-\item{collections}{a \code{character} ...}
+\item{longitude}{a \code{numeric} vector corresponding to longitude in
+WGS84 coordinate system.}
 
-\item{...}{a \code{character} ...}
+\item{collections}{a \code{character} vector of identifier (name) of
+collections delimited by comma.}
+
+\item{...}{a \code{list} Parameters to httr::GET function.}
+
+\item{query_info}{a \code{bolean} flag, if true query information is
+returned.}
 }
 \value{
-
+a \code{object} of wlts class with query (if \code{query_info} is
+ provided) and a tibble with trajectory requested.
 }
 \description{
-...
+Retrieves the land use and cover trajectories from the data
+ collections given a location in space. The property \code{result} contains
+ the feature identifier information, class, time, and the collection
+ associated to the data item.
 }

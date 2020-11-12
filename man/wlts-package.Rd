@@ -23,3 +23,25 @@ The WLTS API has three commands:
 }
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/M3nin0/rwlts/}
+  \item Report bugs at \url{https://github.com/M3nin0/rwlts/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Felipe Carlos \email{felipe.carlos@inpe.br}
+
+Authors:
+\itemize{
+  \item Felipe Carvalho \email{felipe.carvalho@inpe.br}
+}
+
+Other contributors:
+\itemize{
+  \item Fabiana Zioti \email{fabiana.zioti@inpe.br} [contributor]
+}
+
+}
