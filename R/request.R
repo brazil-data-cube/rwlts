@@ -1,12 +1,14 @@
-#' @title
+#' @title Make a HTTP request
+#' @name request
 #'
-#' @param URL \code{character} ...
-#' @param query \code{character} ...
-#' @param ... \code{character} ...
+#' @description makes an HTTP request along with HTTP query parameters
+#' for a web service
+#'
+#' @param URL \code{character} URL of the WLTS Service
+#' @param query \code{list} A named list with HTTP query parameters
+#' @param ... \code{character} Parameters to httr::GET function
 #'
 #' @return
-#'
-#'
 request <- function(URL, ..., query = NULL) {
 
   tryCatch({
@@ -19,14 +21,17 @@ request <- function(URL, ..., query = NULL) {
   httr::content(response_obj)
 }
 
-#' @title
+
+#' @title Create a valid URL
+#' @name .build_url
 #'
-#' @param URL \code{character} ...
+#' @description Checks if the URL has patterns that may cause query problems.
+#'
+#' @param URL \code{character} URL of the WLTS Service
 #' @param path \code{character} ...
-#' @param query \code{character} ...
 #' @param ... \code{character} ...
 #'
-#'
+#' @return
 .build_url <- function(URL, path, ...) {
   url <- paste0(URL, path)
   url <- gsub("/$", "", url)
