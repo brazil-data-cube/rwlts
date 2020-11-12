@@ -1,10 +1,9 @@
-#' @title ...
+#' @title Build wlts tibble
 #'
-#' @param a \code{character} ...
+#' @param result a named \code{list} from request in get_trajectory.
+#' @param index  a \code{numeric} point identifier.
 #'
-#' @return
-#'
-#'
+#' @return a \code{tibble} with trajectory data.
 .build_wlts_tb <- function(result, index) {
 
   # transform to tibble the result requested
