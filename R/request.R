@@ -35,4 +35,8 @@ request <- function(URL, ..., query = NULL) {
 .build_url <- function(URL, path, ...) {
   url <- paste0(URL, path)
   url <- gsub("/$", "", url)
+
+  names(query) <- c("start_date", "end_date", "collections")
+
+  return(list(url = url, query = query))
 }

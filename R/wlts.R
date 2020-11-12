@@ -39,35 +39,57 @@ describe_collection <- function(URL, collection_id, ...) {
 
 #' @title ...
 #'
-#' @param latitude    a \code{numeric} ...
-#' @param longitude   a \code{numeric} ...
-#' @param collections a \code{character} ...
-#' @param ...         a \code{character} ...
+#' @param
+#' @param latitude     a \code{numeric} ...
+#' @param longitude    a \code{numeric} ...
+#' @param collections  a \code{character} ...
+#' @param ...          a \code{character} ...
 #'
 #' @return
 #'
 #' @export
-get_trajectory <- function(URL, latitude, longitude, collections = NULL,
-                           start_date = NULL, end_date = NULL, ...) {
+get_trajectory <- function(URL,
+                           latitude,
+                           longitude,
+                           collections = NULL,
+                           start_date  = NULL,
+                           end_date    = NULL,
+                           ...,
+                           query_info = FALSE) {
 
   if (missing(URL))
     stop("WLTS URL service must be provided.")
 
+  # check if the latitude and longitude
   .check_location(latitude, longitude)
 
-  datetime <- list(start_date, end_date)
-  if (any(!missing(start_date) & !missing(end_date)))
-    datetime <- .parse_datetime(start_date, end_date)
+  if (any(!is.null(start_date) | !is.null(end_date)))
+    .check_datetime(start_date, end_date)
 
-  query <- list(datetime$start_date, datetime$end_date, latitude, longitude, collections)
-  names(query) <- c("start_date", "end_date", "latitude", "longitude", "collections")
-  query <- .drop_na(query)
+  # build final url
+  url_obj <- .build_url(URL, path  = "/trajectory",
+                        query = list(start_date, end_date, collections))
 
-  final_url <- .build_url(URL, path  = "/trajectory")
-  content <- request(final_url, query = query, ...)
+  # create a list of content
+  list_content <- lapply(seq_along(latitude), function(i) {
+    url_obj$query[c("latitude", "longitude")] <- c(latitude[i], longitude[i])
+
+    # TODO: adjust parent.frame
+    content <- request(url_obj$url, query = url_obj$query, ...)
+    content$result <- .build_wlts_tb(content$result, index = i)
+
+    content
+  })
+
+  result_query <- NULL
+  if (query_info)
+    result_query <- sapply(list_content, `[[`, "query", simplify = FALSE)
+
+  wlts_tb <- do.call(rbind, sapply(list_content, `[[`, "result",
+                                   simplify = FALSE))
 
   structure(list(
-    query = content$query,
-    result = .build_result_tibble(content$result)),
-    class = "wlts")
+    query  = result_query,
+    result = wlts_tb),
+    class  = "wlts")
 }
