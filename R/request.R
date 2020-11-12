@@ -27,7 +27,11 @@ request <- function(URL, ..., query = NULL) {
 #' @param ... \code{character} ...
 #'
 #'
-.build_url <- function(URL, path, ...) {
+.build_url <- function(URL, path, query) {
   url <- paste0(URL, path)
   url <- gsub("/$", "", url)
+
+  names(query) <- c("start_date", "end_date", "collections")
+
+  return(list(url = url, query = query))
 }
