@@ -2,19 +2,20 @@
 % Please edit documentation in R/request.R
 \name{.build_url}
 \alias{.build_url}
-\title{}
+\title{Create a valid URL}
 \usage{
-.build_url(URL, path, ...)
+.build_url(URL, path, query = NULL)
 }
 \arguments{
-\item{URL}{\code{character} ...}
+\item{URL}{a \code{character} URL of the WLTS Service.}
 
-\item{path}{\code{character} ...}
+\item{path}{a \code{character} with URL path.}
 
-\item{...}{\code{character} ...}
-
-\item{query}{\code{character} ...}
+\item{query}{a \code{list} A named list with HTTP query parameters.}
+}
+\value{
+a \code{list} with \code{url} and \code{query} attributes.
 }
 \description{
-
+Checks if the URL has patterns that may cause query problems.
 }

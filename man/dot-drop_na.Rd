@@ -2,16 +2,16 @@
 % Please edit documentation in R/utils.R
 \name{.drop_na}
 \alias{.drop_na}
-\title{...}
+\title{Validates the dates relationship}
 \usage{
 .drop_na(elements)
 }
 \arguments{
-\item{elements}{\code{character} ...}
+\item{elements}{\code{character} A vector of character elements}
 }
 \value{
-
+a filtered \code{list}.
 }
 \description{
-...
+Check if they are in a valid start and end date relationship
 }
