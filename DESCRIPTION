@@ -1,14 +1,18 @@
 Package: rwlts
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Web Land Trajectory Service R Client
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Authors@R: c(person('Felipe', 'Carlos', role = c('aut', 'cre'), email = 'felipe.carlos@inpe.br'),
+            person('Felipe', 'Carvalho', role = c('aut'), email = 'felipe.carvalho@inpe.br'),
+            person('Fabiana', 'Zioti', role = c('ctb'), email = 'fabiana.zioti@inpe.br'))
+Maintainer: Felipe Carlos <felipe.carlos@inpe.br>
+Description: R client for access to data provided in the Brazil Data Cube Web Land Trajectory Service.
+Depends: R (>= 3.5.0)
+URL: https://github.com/M3nin0/rwlts/
+BugReports: https://github.com/M3nin0/rwlts/issues
 Imports:
   httr,
-  sf
+  tibble
 License: MIT License
 Encoding: UTF-8
 LazyData: true
