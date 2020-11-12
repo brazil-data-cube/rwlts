@@ -22,7 +22,8 @@
 #' @title Validates the dates
 #' @name .check_datetime
 #'
-#' @description Checks if the dates are in RFC 3339 format
+#' @description Checks if the dates are in RFC 3339 format and if they are in a
+#'  valid start and end date relationship
 #'
 #' @param start_date \code{character} Start date in RFC 3339 format
 #' @param end_date   \code{character} End date in RFC 3339 format
@@ -35,15 +36,6 @@
   if (!all(check_status))
     stop("The dates must be in the format of RFC 3339.")
 
-#' @title Validates the dates relationship
-#' @name .parse_datetime
-#'
-#' @description Checks if the dates are in RFC 3339 format and if they are in a
-#' valid start and end date relationship
-#'
-#' @param start_date \code{character} Start date in RFC 3339 format
-#' @param end_date   \code{character} End date in RFC 3339 format
-.parse_datetime <- function(start_date, end_date) {
   if (all(!is.null(start_date) & !is.null(end_date)))
     if (start_date >= end_date)
       stop("The 'start_date' should be less than 'end_date'.")
