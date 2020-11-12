@@ -2,14 +2,15 @@ Package: rwlts
 Type: Package
 Title: Web Land Trajectory Service R Client
 Version: 0.1.0
-Authors@R: c(person('Felipe', 'Carlos', role = c('aut', 'cre'), email = 'felipe.carlos@inpe.br'),
-            person('Felipe', 'Carvalho', role = c('aut'), email = 'felipe.carvalho@inpe.br'),
-            person('Fabiana', 'Zioti', role = c('ctb'), email = 'fabiana.zioti@inpe.br'))
-Maintainer: Felipe Carlos <felipe.carlos@inpe.br>
+Authors@R: 
+    c(person("Brazil Data Cube Team", 
+            email = "brazildatacube@inpe.br",
+            role = c("cre", "aut")),
+    person(given = "National Institute for Space Research (INPE)", role = c("cph")))
 Description: R client for access to data provided in the Brazil Data Cube Web Land Trajectory Service.
 Depends: R (>= 3.5.0)
-URL: https://github.com/M3nin0/rwlts/
-BugReports: https://github.com/M3nin0/rwlts/issues
+URL: https://github.com/brazil-data-cube/rwlts/
+BugReports: https://github.com/brazil-data-cube/rwlts/issues
 Imports:
   httr,
   tibble
