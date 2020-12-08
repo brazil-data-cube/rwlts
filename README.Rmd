@@ -40,31 +40,6 @@ Besides these projects there are other initiatives from universities and space a
 
 Although these projects follow open data policies and provide a rich collection of data, there is still a gap in tools that facilitate the integrated use of these collections. Each project adopts its own land use and land cover classification system, providing different class names and meanings for the elements of these collections. The forms of distribution of project data can be carried out in different ways, through files or web services. In addition, the data has different spatial and temporal resolutions and storage systems (raster or vector).
 
-In this context, the **W**eb **L**and **T**rajectory **S**ervice (WLTS) is a service that aims to facilitate the access to these various land use and cover data collections through a tailored API. The result is tool that allows researchers and specialists to spend their time in the analytical process, once the API provides the integration of these datasets and brings the concept of Land Use and Cover Trajectories as a high level abstraction. The WLTS # rwlts - Web Land Trajectory Service R Client
-
-R client for access to data provided in the Brazil Data Cube Web Land Trajectory Service.
-
-<!-- badges: start -->
-
-[![Software
-License](https://img.shields.io/badge/license-MIT-green)](https://github.com/brazil-data-cube/rstac/blob/master/LICENSE)
-[![Software Life
-Cycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Join us at
-Discord](https://img.shields.io/discord/689541907621085198?logo=discord&logoColor=ffffff&color=7389D8)](https://discord.com/channels/689541907621085198#)
-<!-- badges: end -->
-
-About
-=====
-
-Information on land use and land cover is essential to support governments in making decisions about the impact of human activities on the environment, planning the use of natural resources, conserving biodiversity and monitoring climate change.
-
-Currently, several projects systematically provide information on the dynamics of land use and cover. Well known projects include PRODES, DETER and TerraClass.
-These projects are developed by INPE and they produce information on land use and coverage used by the Brazilian Government to make public policy decisions.
-Besides these projects there are other initiatives from universities and space agencies devoted to the creation of national and global maps.
-
-Although these projects follow open data policies and provide a rich collection of data, there is still a gap in tools that facilitate the integrated use of these collections. Each project adopts its own land use and land cover classification system, providing different class names and meanings for the elements of these collections. The forms of distribution of project data can be carried out in different ways, through files or web services. In addition, the data has different spatial and temporal resolutions and storage systems (raster or vector).
-
 In this context, the **W**eb **L**and **T**rajectory **S**ervice (WLTS) is a service that aims to facilitate the access to these vaapproach consists of using a data model that defines a minimum set of temporal and spatial information to represent different sources and types of data, but with a focus on land use and land cover.
 
 WLTS can be used in a variety of applications, such as validating land cover data sets, selecting training samples to support Machine Learning algorithms used in the generation of new classification maps.
