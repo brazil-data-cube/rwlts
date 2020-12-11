@@ -1,0 +1,112 @@
+
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  out.width = "100%"
+)
+library(tibble)
+```
+
+# rwlts - Web Land Trajectory Service R Client
+
+R client for access to data provided in the Brazil Data Cube Web Land Trajectory Service.
+
+<!-- badges: start -->
+
+[![Software
+License](https://img.shields.io/badge/license-MIT-green)](https://github.com/brazil-data-cube/rstac/blob/master/LICENSE)
+[![Software Life
+Cycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Join us at
+Discord](https://img.shields.io/discord/689541907621085198?logo=discord&logoColor=ffffff&color=7389D8)](https://discord.com/channels/689541907621085198#)
+<!-- badges: end -->
+
+About
+=====
+
+Information on land use and land cover is essential to support governments in making decisions about the impact of human activities on the environment, planning the use of natural resources, conserving biodiversity and monitoring climate change.
+
+Currently, several projects systematically provide information on the dynamics of land use and cover. Well known projects include PRODES, DETER and TerraClass.
+These projects are developed by INPE and they produce information on land use and coverage used by the Brazilian Government to make public policy decisions.
+Besides these projects there are other initiatives from universities and space agencies devoted to the creation of national and global maps.
+
+Although these projects follow open data policies and provide a rich collection of data, there is still a gap in tools that facilitate the integrated use of these collections. Each project adopts its own land use and land cover classification system, providing different class names and meanings for the elements of these collections. The forms of distribution of project data can be carried out in different ways, through files or web services. In addition, the data has different spatial and temporal resolutions and storage systems (raster or vector).
+
+In this context, the **W**eb **L**and **T**rajectory **S**ervice (WLTS) is a service that aims to facilitate the access to these vaapproach consists of using a data model that defines a minimum set of temporal and spatial information to represent different sources and types of data, but with a focus on land use and land cover.
+
+WLTS can be used in a variety of applications, such as validating land cover data sets, selecting training samples to support Machine Learning algorithms used in the generation of new classification maps.
+
+If you want to know more about WLTS service, please, take a look at its [specification](https://github.com/brazil-data-cube/wlts-spec).
+
+
+## Installation
+
+To install the development version of `rwlts`, run the following commands:
+
+``` {R, eval=FALSE}
+# load necessary libraries
+library(devtools)
+install_github("brazil-data-cube/rwlts")
+```
+
+Importing `rwlts` package:
+
+``` {R, echo=TRUE, warning=FALSE, message=FALSE}
+library(rwlts)
+```
+
+## Usage
+
+`rwlts` implements the following WLTS operations:
+
+```{R, echo=FALSE}
+tribble(
+  ~"**WLTS** operations", ~"`rwlts` functions",
+  "`/list_collections`", "`list_collections(URL,)`",
+  "`/describe_collections`", "`describe_collection(URL, collection_id)`",
+  "`/trajectory`", "`get_trajectory(URL, latitude, longitude)`"
+) %>% as.data.frame() %>% knitr::kable(format = "markdown")
+```
+
+These functions can be used to retrieve information from a WLTS service.
+
+The code bellow list the available
+collections of the WLTS of the [Brazil Data
+Cube](http://brazildatacube.org/) project of the Brazilian National Space Research Institute [INPE](http://www.inpe.br/).
+
+``` {R, echo=TRUE}
+wlts_bdc <- "http://brazildatacube.dpi.inpe.br/dev/wlts/"
+
+list_collections(wlts_bdc)
+```
+
+
+In the code bellow, we get the metadata of a specific collection:
+
+``` {R, echo=TRUE}
+describe_collection(wlts_bdc, "deter_amazonia_legal")
+```
+
+This example shows how to retrieve a trajectory:
+
+``` {R, echo=TRUE}
+
+get_trajectory(wlts_bdc, latitude = c(-12, -11.01), longitude = c(-54, -54), collections = "mapbiomas5_amazonia")
+
+```
+
+License
+=======
+
+    Copyright (C) 2020 INPE.
+
+    R client for WLTS is free software; you can redistribute it and/or modify it
+    under the terms of the MIT License; see LICENSE file for more details.
