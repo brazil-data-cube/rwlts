@@ -17,7 +17,7 @@
 #' @export
 list_collections <- function(URL, ...) {
 
-  if (missing(URL))
+  if (is.null(URL))
     stop("The WLTS URL service must be provided.")
 
   # is this best way?
