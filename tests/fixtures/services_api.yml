@@ -1,0 +1,28 @@
+http_interactions:
+- request:
+    method: get
+    uri: http://brazildatacube.dpi.inpe.br/dev/wlts//list_collections
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Fri, 11 Dec 2020 22:06:53 GMT
+      server: nginx/1.18.0
+      content-type: application/json
+      content-length: '305'
+      access-control-allow-origin: '*'
+    body:
+      encoding: UTF-8
+      file: no
+      string: |
+        {"collections":["terraclass_amazonia","deter_amazonia_legal","deter_cerrado","prodes_cerrado","prodes_amazonia_legal","lapig_cerrado_pasture","ibge_cobertura_uso_terra","mapbiomas5_amazonia","mapbiomas5_cerrado","mapbiomas5_caatinga","mapbiomas5_mata_atlantica","mapbiomas5_pampa","mapbiomas5_pantanal"]}
+  recorded_at: 2020-12-11 22:06:53 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0

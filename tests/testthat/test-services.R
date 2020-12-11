@@ -21,16 +21,5 @@ testthat::test_that("services api", {
     testthat::expect_error(
       object = list_collections("."))
 
-
-
-
-
-
-
-
-
-
-
-
   })
 })
