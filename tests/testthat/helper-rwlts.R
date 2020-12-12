@@ -1,5 +1,4 @@
-library("vcr")
-library("magrittr")
+library(vcr)
 invisible(vcr::vcr_configure(
   dir    = "../fixtures",
   record = "new_episodes",
