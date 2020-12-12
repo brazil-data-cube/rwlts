@@ -11,7 +11,7 @@ Trajectory Service.
 [![Software
 License](https://img.shields.io/badge/license-MIT-green)](https://github.com/brazil-data-cube/rstac/blob/master/LICENSE)
 [![Travis build
-status](https://travis-ci.com/OldLipe/rwlts.svg?branch=master)](https://travis-ci.com/OldLipe/rwlts)
+status](https://api.travis-ci.com/OldLipe/rwlts.svg?)](https://travis-ci.com/OldLipe/rwlts)
 [![Build
 status](https://ci.appveyor.com/api/projects/status/qp5ohssj328vynh0?svg=true)](https://ci.appveyor.com/project/OldLipe/rwlts)
 [![codecov](https://codecov.io/gh/OldLipe/rwlts/branch/master/graph/badge.svg)](https://codecov.io/gh/OldLipe/rwlts)
@@ -19,8 +19,6 @@ status](https://ci.appveyor.com/api/projects/status/qp5ohssj328vynh0?svg=true)](
 Cycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Join us at
 Discord](https://img.shields.io/discord/689541907621085198?logo=discord&logoColor=ffffff&color=7389D8)](https://discord.com/channels/689541907621085198#)
-[![Codecov test
-coverage](https://codecov.io/gh/OldLipe/rwlts/branch/master/graph/badge.svg)](https://codecov.io/gh/OldLipe/rwlts?branch=master)
 <!-- badges: end -->
 
 # About
