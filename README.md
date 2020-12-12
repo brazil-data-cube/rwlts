@@ -14,7 +14,7 @@ License](https://img.shields.io/badge/license-MIT-green)](https://github.com/bra
 status](https://api.travis-ci.com/OldLipe/rwlts.svg?)](https://travis-ci.com/OldLipe/rwlts)
 [![Build
 status](https://ci.appveyor.com/api/projects/status/qp5ohssj328vynh0?svg=true)](https://ci.appveyor.com/project/OldLipe/rwlts)
-[![codecov](https://codecov.io/gh/OldLipe/rwlts/branch/master/graph/badge.svg)](https://codecov.io/gh/OldLipe/rwlts)
+[![codecov](https://codecov.io/gh/OldLipe/rwlts/branch/main/graph/badge.svg?)](https://codecov.io/gh/OldLipe/rwlts)
 [![Software Life
 Cycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Join us at
