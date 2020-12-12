@@ -69,15 +69,17 @@ describe_collection <- function(URL, collection_id, ...) {
 #'  the feature identifier information, class, time, and the collection
 #'  associated to the data item.
 #'
-#' @param URL          a \code{character} URL of the WLTS Service.
-#' @param latitude     a \code{numeric} vector corresponding to latitude in
+#' @param URL         a \code{character} URL of the WLTS Service.
+#' @param latitude    a \code{numeric} vector corresponding to latitude in
 #'  WGS84 coordinate system.
-#' @param longitude    a \code{numeric} vector corresponding to longitude in
+#' @param longitude   a \code{numeric} vector corresponding to longitude in
 #'  WGS84 coordinate system.
-#' @param collections  a \code{character} vector of identifier (name) of
+#' @param collections a \code{character} vector of identifier (name) of
 #'  collections delimited by comma.
+#' @param start_date  a \code{character} with the start date to be search.
+#' @param end_date    a \code{character} with the end date to be search.
 #' @param ...         a \code{list} Parameters to httr::GET function.
-#' @param query_info   a \code{bolean} flag, if true query information is
+#' @param query_info  a \code{bolean} flag, if true query information is
 #'  returned.
 #'
 #' @examples

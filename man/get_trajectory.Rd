@@ -27,6 +27,10 @@ WGS84 coordinate system.}
 \item{collections}{a \code{character} vector of identifier (name) of
 collections delimited by comma.}
 
+\item{start_date}{a \code{character} with the start date to be search.}
+
+\item{end_date}{a \code{character} with the end date to be search.}
+
 \item{...}{a \code{list} Parameters to httr::GET function.}
 
 \item{query_info}{a \code{bolean} flag, if true query information is
