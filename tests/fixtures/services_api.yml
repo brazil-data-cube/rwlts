@@ -24,5 +24,113 @@ http_interactions:
       file: no
       string: |
         {"collections":["terraclass_amazonia","deter_amazonia_legal","deter_cerrado","prodes_cerrado","prodes_amazonia_legal","lapig_cerrado_pasture","ibge_cobertura_uso_terra","mapbiomas5_amazonia","mapbiomas5_cerrado","mapbiomas5_caatinga","mapbiomas5_mata_atlantica","mapbiomas5_pampa","mapbiomas5_pantanal"]}
-  recorded_at: 2020-12-11 22:06:53 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2020-12-12 00:08:15 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.4
+- request:
+    method: get
+    uri: http://brazildatacube.dpi.inpe.br/dev/wlts//describe_collection?collection_id=deter_amazonia_legal
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Sat, 12 Dec 2020 00:08:14 GMT
+      server: nginx/1.18.0
+      content-type: application/json
+      content-length: '1057'
+      access-control-allow-origin: '*'
+    body:
+      encoding: UTF-8
+      file: no
+      string: |
+        {"classification_system":{"classification_system_id":"21","classification_system_name":"DETER Amaz\u00f4nia Legal","type":"Self"},"collection_type":"Feature","description":"Alertas de Desmatamento da Amaz\u00f4nia Legal.","detail":"O DETER \u00e9 um levantamento r\u00e1pido de alertas de evid\u00eancias de altera\u00e7\u00e3o da cobertura florestal na Amaz\u00f4nia, feito pelo INPE. O DETER foi desenvolvido como um sistema de alerta para dar suporte \u00e0 fiscaliza\u00e7\u00e3o e controle de desmatamento e da degrada\u00e7\u00e3o florestal realizadas pelo Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renov\u00e1veis (IBAMA) e demais \u00f3rg\u00e3os ligados a esta tem\u00e1tica. Mais informa\u00e7\u00f5es acesse: http://www.obt.inpe.br/OBT/assuntos/programas/amazonia/deter","name":"deter_amazonia_legal","period":{"end_date":"2020-06-18","start_date":"2016-08-02"},"resolution_unit":{"unit":"DAY","value":"1"},"spatial_extent":{"xmax":-44.0003914444064,"xmin":-73.5490878282397,"ymax":4.55537642867927,"ymin":-18.0364406523564}}
+  recorded_at: 2020-12-12 00:08:15 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.4
+- request:
+    method: get
+    uri: http://brazildatacube.dpi.inpe.br/dev/wlts//trajectory?start_date=2015-01-01&end_date=2017-01-01&collections=mapbiomas5_amazonia&latitude=-12&longitude=-54
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Sat, 12 Dec 2020 00:08:14 GMT
+      server: nginx/1.18.0
+      content-type: application/json
+      content-length: '431'
+      access-control-allow-origin: '*'
+    body:
+      encoding: UTF-8
+      file: no
+      string: |
+        {"query":{"collections":["mapbiomas5_amazonia"],"end_date":"2017-01-01","latitude":-12.0,"longitude":-54.0,"start_date":"2015-01-01"},"result":{"trajectory":[{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2015"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2016"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2017"}]}}
+  recorded_at: 2020-12-12 00:08:15 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.4
+- request:
+    method: get
+    uri: http://brazildatacube.dpi.inpe.br/dev/wlts//trajectory?collections=mapbiomas5_amazonia&latitude=-12&longitude=-54
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Sat, 12 Dec 2020 00:08:15 GMT
+      server: nginx/1.18.0
+      content-type: application/json
+      content-length: '1945'
+      access-control-allow-origin: '*'
+    body:
+      encoding: UTF-8
+      file: no
+      string: |
+        {"query":{"collections":["mapbiomas5_amazonia"],"end_date":null,"latitude":-12.0,"longitude":-54.0,"start_date":null},"result":{"trajectory":[{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2000"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2001"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2002"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2003"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2004"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2005"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2006"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2007"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2008"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2009"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2010"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2011"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2012"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2013"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2014"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2015"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2016"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2017"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2018"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2019"}]}}
+  recorded_at: 2020-12-12 00:08:15 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.4
+- request:
+    method: get
+    uri: http://brazildatacube.dpi.inpe.br/dev/wlts//trajectory?collections=mapbiomas5_amazonia&latitude=-11.01&longitude=-54
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Sat, 12 Dec 2020 00:08:15 GMT
+      server: nginx/1.18.0
+      content-type: application/json
+      content-length: '1926'
+      access-control-allow-origin: '*'
+    body:
+      encoding: UTF-8
+      file: no
+      string: |
+        {"query":{"collections":["mapbiomas5_amazonia"],"end_date":null,"latitude":-11.01,"longitude":-54.0,"start_date":null},"result":{"trajectory":[{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2000"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2001"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2002"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2003"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2004"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2005"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2006"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2007"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2008"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2009"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2010"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2011"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2012"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2013"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2014"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2015"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2016"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2017"},{"class":"Forma\u00e7\u00e3o Florestal","collection":"mapbiomas5_amazonia","date":"2018"},{"class":"Pastagem","collection":"mapbiomas5_amazonia","date":"2019"}]}}
+  recorded_at: 2020-12-12 00:08:15 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.4

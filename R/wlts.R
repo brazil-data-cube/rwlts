@@ -40,7 +40,7 @@ list_collections <- function(URL, ...) {
 #' \donttest{
 #'  wlts_bdc <- "http://brazildatacube.dpi.inpe.br/dev/wlts/"
 #'
-#'  describe_collection(wlts_bdc, "deter_amz_legal")
+#'  describe_collection(wlts_bdc, "deter_amazonia_legal")
 #' }
 #'
 #' @return a named \code{list} with the metadata of data collection.
@@ -48,8 +48,11 @@ list_collections <- function(URL, ...) {
 #' @export
 describe_collection <- function(URL, collection_id, ...) {
 
-  if (missing(URL))
+  if (is.null(URL))
     stop("WLTS URL service must be provided.")
+
+  if (is.null(collection_id))
+    stop("collection_id must be provided.")
 
   url_obj <- .build_url(URL, path = "/describe_collection",
                         query = list(collection_id),
@@ -82,7 +85,15 @@ describe_collection <- function(URL, collection_id, ...) {
 #'  wlts_bdc <- "http://brazildatacube.dpi.inpe.br/dev/wlts/"
 #'
 #'  get_trajectory(wlts_bdc, latitude = c(-12, -11.01), longitude = c(-54, -54),
-#'                collections = "mapbiomas_amz_4_1")
+#'                collections = "mapbiomas5_amazonia")
+#'
+#'  # date interval
+#'  get_trajectory(URL        = wlts_bdc,
+#'                latitude    = c(-12, -11),
+#'                longitude   = c(-54, -55),
+#'                collections = "mapbiomas5_amazonia",
+#'                start_date  = "2015-07-01",
+#'                end_date    = "2017-07-01")
 #' }
 #'
 #' @return a \code{object} of wlts class with query (if \code{query_info} is
@@ -98,7 +109,7 @@ get_trajectory <- function(URL,
                            ...,
                            query_info = FALSE) {
 
-  if (missing(URL))
+  if (is.null(URL))
     stop("WLTS URL service must be provided.")
 
   # check if the latitude and longitude

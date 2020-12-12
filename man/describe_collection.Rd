@@ -24,7 +24,7 @@ Retrieves the metadata of a given data collection.
 \donttest{
  wlts_bdc <- "http://brazildatacube.dpi.inpe.br/dev/wlts/"
 
- describe_collection(wlts_bdc, "deter_amz_legal")
+ describe_collection(wlts_bdc, "deter_amazonia_legal")
 }
 
 }

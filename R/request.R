@@ -40,8 +40,6 @@ request <- function(URL, ..., query = NULL) {
   url <- paste0(URL, path)
   url <- gsub("/$", "", url)
 
-  if (!is.null(query))
-    names(query) <- names_list
-
+  names(query) <- names_list
   return(list(url = url, query = query))
 }
