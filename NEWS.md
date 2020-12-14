@@ -1,4 +1,4 @@
-# Version 0.4.0-0 
+# Version 0.4.0-0 (2020-12-14)
 
 - Base documentation;
 - Add CI support (unit tests and code coverage);
