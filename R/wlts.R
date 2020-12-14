@@ -17,7 +17,7 @@
 #' @export
 list_collections <- function(URL, ...) {
 
-  if (missing(URL))
+  if (is.null(URL))
     stop("The WLTS URL service must be provided.")
 
   # is this best way?
@@ -40,7 +40,7 @@ list_collections <- function(URL, ...) {
 #' \donttest{
 #'  wlts_bdc <- "http://brazildatacube.dpi.inpe.br/dev/wlts/"
 #'
-#'  describe_collection(wlts_bdc, "deter_amz_legal")
+#'  describe_collection(wlts_bdc, "deter_amazonia_legal")
 #' }
 #'
 #' @return a named \code{list} with the metadata of data collection.
@@ -48,8 +48,11 @@ list_collections <- function(URL, ...) {
 #' @export
 describe_collection <- function(URL, collection_id, ...) {
 
-  if (missing(URL))
+  if (is.null(URL))
     stop("WLTS URL service must be provided.")
+
+  if (is.null(collection_id))
+    stop("collection_id must be provided.")
 
   url_obj <- .build_url(URL, path = "/describe_collection",
                         query = list(collection_id),
@@ -66,15 +69,17 @@ describe_collection <- function(URL, collection_id, ...) {
 #'  the feature identifier information, class, time, and the collection
 #'  associated to the data item.
 #'
-#' @param URL          a \code{character} URL of the WLTS Service.
-#' @param latitude     a \code{numeric} vector corresponding to latitude in
+#' @param URL         a \code{character} URL of the WLTS Service.
+#' @param latitude    a \code{numeric} vector corresponding to latitude in
 #'  WGS84 coordinate system.
-#' @param longitude    a \code{numeric} vector corresponding to longitude in
+#' @param longitude   a \code{numeric} vector corresponding to longitude in
 #'  WGS84 coordinate system.
-#' @param collections  a \code{character} vector of identifier (name) of
+#' @param collections a \code{character} vector of identifier (name) of
 #'  collections delimited by comma.
+#' @param start_date  a \code{character} with the start date to be search.
+#' @param end_date    a \code{character} with the end date to be search.
 #' @param ...         a \code{list} Parameters to httr::GET function.
-#' @param query_info   a \code{bolean} flag, if true query information is
+#' @param query_info  a \code{bolean} flag, if true query information is
 #'  returned.
 #'
 #' @examples
@@ -82,7 +87,15 @@ describe_collection <- function(URL, collection_id, ...) {
 #'  wlts_bdc <- "http://brazildatacube.dpi.inpe.br/dev/wlts/"
 #'
 #'  get_trajectory(wlts_bdc, latitude = c(-12, -11.01), longitude = c(-54, -54),
-#'                collections = "mapbiomas_amz_4_1")
+#'                collections = "mapbiomas5_amazonia")
+#'
+#'  # date interval
+#'  get_trajectory(URL        = wlts_bdc,
+#'                latitude    = c(-12, -11),
+#'                longitude   = c(-54, -55),
+#'                collections = "mapbiomas5_amazonia",
+#'                start_date  = "2015-07-01",
+#'                end_date    = "2017-07-01")
 #' }
 #'
 #' @return a \code{object} of wlts class with query (if \code{query_info} is
@@ -98,7 +111,7 @@ get_trajectory <- function(URL,
                            ...,
                            query_info = FALSE) {
 
-  if (missing(URL))
+  if (is.null(URL))
     stop("WLTS URL service must be provided.")
 
   # check if the latitude and longitude

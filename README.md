@@ -10,6 +10,11 @@ Trajectory Service.
 
 [![Software
 License](https://img.shields.io/badge/license-MIT-green)](https://github.com/brazil-data-cube/rstac/blob/master/LICENSE)
+[![Travis build
+status](https://api.travis-ci.com/OldLipe/rwlts.svg?)](https://travis-ci.com/OldLipe/rwlts)
+[![Build
+status](https://ci.appveyor.com/api/projects/status/qp5ohssj328vynh0?svg=true)](https://ci.appveyor.com/project/OldLipe/rwlts)
+[![codecov](https://codecov.io/gh/OldLipe/rwlts/branch/main/graph/badge.svg?)](https://codecov.io/gh/OldLipe/rwlts)
 [![Software Life
 Cycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Join us at
@@ -106,52 +111,52 @@ describe_collection(wlts_bdc, "deter_amazonia_legal")
 #> $classification_system
 #> $classification_system$classification_system_id
 #> [1] "21"
-#>
+#> 
 #> $classification_system$classification_system_name
 #> [1] "DETER Amazônia Legal"
-#>
+#> 
 #> $classification_system$type
 #> [1] "Self"
-#>
-#>
+#> 
+#> 
 #> $collection_type
 #> [1] "Feature"
-#>
+#> 
 #> $description
 #> [1] "Alertas de Desmatamento da Amazônia Legal."
-#>
+#> 
 #> $detail
 #> [1] "O DETER é um levantamento rápido de alertas de evidências de alteração da cobertura florestal na Amazônia, feito pelo INPE. O DETER foi desenvolvido como um sistema de alerta para dar suporte à fiscalização e controle de desmatamento e da degradação florestal realizadas pelo Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis (IBAMA) e demais órgãos ligados a esta temática. Mais informações acesse: http://www.obt.inpe.br/OBT/assuntos/programas/amazonia/deter"
-#>
+#> 
 #> $name
 #> [1] "deter_amazonia_legal"
-#>
+#> 
 #> $period
 #> $period$end_date
 #> [1] "2020-06-18"
-#>
+#> 
 #> $period$start_date
 #> [1] "2016-08-02"
-#>
-#>
+#> 
+#> 
 #> $resolution_unit
 #> $resolution_unit$unit
 #> [1] "DAY"
-#>
+#> 
 #> $resolution_unit$value
 #> [1] "1"
-#>
-#>
+#> 
+#> 
 #> $spatial_extent
 #> $spatial_extent$xmax
 #> [1] -44.00039
-#>
+#> 
 #> $spatial_extent$xmin
 #> [1] -73.54909
-#>
+#> 
 #> $spatial_extent$ymax
 #> [1] 4.555376
-#>
+#> 
 #> $spatial_extent$ymin
 #> [1] -18.03644
 ```
@@ -163,7 +168,7 @@ This example shows how to retrieve a trajectory:
 get_trajectory(wlts_bdc, latitude = c(-12, -11.01), longitude = c(-54, -54), collections = "mapbiomas5_amazonia")
 #> $query
 #> NULL
-#>
+#> 
 #> $result
 #> # A tibble: 40 x 4
 #>    class              collection          date  point_id
@@ -179,7 +184,7 @@ get_trajectory(wlts_bdc, latitude = c(-12, -11.01), longitude = c(-54, -54), col
 #>  9 Formação Florestal mapbiomas5_amazonia 2008         1
 #> 10 Formação Florestal mapbiomas5_amazonia 2009         1
 #> # … with 30 more rows
-#>
+#> 
 #> attr(,"class")
 #> [1] "wlts"
 ```
@@ -187,6 +192,6 @@ get_trajectory(wlts_bdc, latitude = c(-12, -11.01), longitude = c(-54, -54), col
 # License
 
     Copyright (C) 2020 INPE.
-
+    
     R client for WLTS is free software; you can redistribute it and/or modify it
     under the terms of the MIT License; see LICENSE file for more details.

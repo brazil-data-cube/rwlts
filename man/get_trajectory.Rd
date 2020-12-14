@@ -27,6 +27,10 @@ WGS84 coordinate system.}
 \item{collections}{a \code{character} vector of identifier (name) of
 collections delimited by comma.}
 
+\item{start_date}{a \code{character} with the start date to be search.}
+
+\item{end_date}{a \code{character} with the end date to be search.}
+
 \item{...}{a \code{list} Parameters to httr::GET function.}
 
 \item{query_info}{a \code{bolean} flag, if true query information is
@@ -47,7 +51,15 @@ Retrieves the land use and cover trajectories from the data
  wlts_bdc <- "http://brazildatacube.dpi.inpe.br/dev/wlts/"
 
  get_trajectory(wlts_bdc, latitude = c(-12, -11.01), longitude = c(-54, -54),
-               collections = "mapbiomas_amz_4_1")
+               collections = "mapbiomas5_amazonia")
+
+ # date interval
+ get_trajectory(URL        = wlts_bdc,
+               latitude    = c(-12, -11),
+               longitude   = c(-54, -55),
+               collections = "mapbiomas5_amazonia",
+               start_date  = "2015-07-01",
+               end_date    = "2017-07-01")
 }
 
 }
