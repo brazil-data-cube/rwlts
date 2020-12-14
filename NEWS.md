@@ -1,6 +1,6 @@
 # Version 0.4.0-0 
 
-- Update documentation;
+- Base documentation;
 - Add CI support (unit tests and code coverage);
 - Add support for all WLTS operations:
 
