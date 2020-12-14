@@ -8,4 +8,4 @@
     - `/describe_collection`
     - `/trajectory`
 
-- License: [MIT](https://raw.githubusercontent.com/brazil-data-cube/rwlts/0.4.0-0/LICENSE)
+- License: [MIT](https://raw.githubusercontent.com/brazil-data-cube/rwlts/master/LICENSE)
