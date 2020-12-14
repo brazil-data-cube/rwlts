@@ -21,7 +21,7 @@ Cycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://
 Discord](https://img.shields.io/discord/689541907621085198?logo=discord&logoColor=ffffff&color=7389D8)](https://discord.com/channels/689541907621085198#)
 <!-- badges: end -->
 
-# About
+## About
 
 Information on land use and land cover is essential to support
 governments in making decisions about the impact of human activities on
@@ -189,7 +189,7 @@ get_trajectory(wlts_bdc, latitude = c(-12, -11.01), longitude = c(-54, -54), col
 #> [1] "wlts"
 ```
 
-# License
+## License
 
     Copyright (C) 2020 INPE.
     
