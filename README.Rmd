@@ -86,7 +86,7 @@ collections of the WLTS of the [Brazil Data
 Cube](http://brazildatacube.org/) project of the Brazilian National Space Research Institute [INPE](http://www.inpe.br/).
 
 ``` {R, echo=TRUE}
-wlts_bdc <- "http://brazildatacube.dpi.inpe.br/dev/wlts/"
+wlts_bdc <- "https://brazildatacube.dpi.inpe.br/wlts/"
 
 list_collections(wlts_bdc)
 ```
