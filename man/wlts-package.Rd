@@ -12,10 +12,10 @@ An R client to the web land trajectory service (WLTS)
 \section{WLTS API}{
 
 
-Implements an R interface to a web land trajectory service (WLTS) 
-that offers a land trajectory time series of remote sensing samples API. 
+Implements an R interface to a web land trajectory service (WLTS)
+that offers a land trajectory time series of remote sensing samples API.
 
-The WLTS API has three commands: 
+The WLTS API has three commands:
 \itemize{
    \item `list_collections`: lists all available collections on WLTS Service
    \item `trajectory`: Returns the Land Use and Land Cover for a spatio-temporal location

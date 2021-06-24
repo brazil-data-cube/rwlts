@@ -6,7 +6,7 @@ testthat::test_that("services api", {
     # skip cran check test
     testthat::skip_on_cran()
 
-    wlts_bdc <- "http://brazildatacube.dpi.inpe.br/dev/wlts/"
+    wlts_bdc <- "https://brazildatacube.dpi.inpe.br/wlts/"
 
     #---- list collections test
     # /list_collections - OK

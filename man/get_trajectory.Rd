@@ -48,7 +48,7 @@ Retrieves the land use and cover trajectories from the data
 }
 \examples{
 \donttest{
- wlts_bdc <- "http://brazildatacube.dpi.inpe.br/dev/wlts/"
+ wlts_bdc <- "https://brazildatacube.dpi.inpe.br/wlts/"
 
  get_trajectory(wlts_bdc, latitude = c(-12, -11.01), longitude = c(-54, -54),
                collections = "mapbiomas5_amazonia")

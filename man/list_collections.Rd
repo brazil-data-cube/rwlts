@@ -19,7 +19,7 @@ Retrieves the list of available data collections.
 }
 \examples{
 \donttest{
- wlts_bdc <- "http://brazildatacube.dpi.inpe.br/dev/wlts/"
+ wlts_bdc <- "https://brazildatacube.dpi.inpe.br/wlts/"
 
  list_collections(wlts_bdc)
 }

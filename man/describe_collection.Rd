@@ -22,7 +22,7 @@ Retrieves the metadata of a given data collection.
 }
 \examples{
 \donttest{
- wlts_bdc <- "http://brazildatacube.dpi.inpe.br/dev/wlts/"
+ wlts_bdc <- "https://brazildatacube.dpi.inpe.br/wlts/"
 
  describe_collection(wlts_bdc, "deter_amazonia_legal")
 }
