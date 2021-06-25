@@ -18,7 +18,7 @@ a \code{character} vector with the available data collections.
 Retrieves the list of available data collections.
 }
 \examples{
-\donttest{
+\dontrun{
  wlts_bdc <- "http://brazildatacube.dpi.inpe.br/dev/wlts/"
 
  list_collections(wlts_bdc)
