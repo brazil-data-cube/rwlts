@@ -1,21 +1,38 @@
 
 #' @title wltr
 #' @description An R client to the web land trajectory service (WLTS)
-#' 
+#'
 #' @section WLTS API:
-#' 
-#' Implements an R interface to a web land trajectory service (WLTS) 
-#' that offers a land trajectory time series of remote sensing samples API. 
-#' 
-#' The WLTS API has three commands: 
+#'
+#' Implements an R interface to a web land trajectory service (WLTS)
+#' that offers a land trajectory time series of remote sensing samples API.
+#'
+#' The WLTS API has three commands:
 #' \itemize{
 #'    \item `list_collections`: lists all available collections on WLTS Service
 #'    \item `trajectory`: Returns the Land Use and Land Cover for a spatio-temporal location
 #'    \item `describe_collection`: retrieves the metadata of a collection
 #' }
-#' 
+#'
 #' @docType package
 #' @name wlts-package
 #' @aliases wlts
 "_PACKAGE"
+NULL
+
+#' Pipe
+#'
+#' Magrittr compound assignment pipe-operator.
+#'
+#' @importFrom magrittr %>%
+#' @name %>%
+#' @rdname pipe
+#' @param lhs,rhs A visualization and a function to apply to it.
+#' @export
+NULL
+
+#' @importFrom dplyr mutate arrange ungroup group_by
+#' @importFrom ggplot2 ggplot aes_string scale_y_continuous theme facet_wrap
+#' geom_text
+#' @importFrom ggalluvial geom_flow geom_stratum
 NULL
