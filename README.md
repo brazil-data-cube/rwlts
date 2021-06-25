@@ -378,7 +378,7 @@ data("mt_500_mapbiomas_cerrado")
 plot_sankey(mt_500_mapbiomas_cerrado)
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-13-1.png" width="100%" />
+<img src="inst/extdata/img/README-unnamed-chunk-13-1.png" width="100%" />
 
 Besides, you can fully customize the returned plot. This customization
 is possible since the `plot_sankey` function returns a ggplot2 object.
@@ -408,7 +408,7 @@ plot_sankey(mt_500_mapbiomas_cerrado, show_count_transition = TRUE) +
                                "Soja"))
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-14-1.png" width="100%" />
+<img src="inst/extdata/img/README-unnamed-chunk-14-1.png" width="100%" />
 
 > The numbers inside each bar correspond to the quantity of points
 > extracted in each year. You can see that according to the change of
