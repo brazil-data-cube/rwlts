@@ -17,4 +17,20 @@
 #' @name wlts-package
 #' @aliases wlts
 "_PACKAGE"
+
+#' Pipe
+#'
+#' Magrittr compound assignment pipe-operator.
+#'
+#' @importFrom magrittr %>%
+#' @name %>%
+#' @rdname pipe
+#' @param lhs,rhs A visualization and a function to apply to it.
+#' @export
+NULL
+
+#' @importFrom dplyr mutate arrange ungroup group_by
+#' @importFrom ggplot2 ggplot aes_string scale_y_continuous theme facet_wrap
+#' geom_text stat
+#' @importFrom ggalluvial geom_flow geom_stratum
 NULL

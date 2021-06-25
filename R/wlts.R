@@ -6,7 +6,7 @@
 #' @param ...         a \code{list} Parameters to httr::GET function
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #'  wlts_bdc <- "https://brazildatacube.dpi.inpe.br/wlts/"
 #'
 #'  list_collections(wlts_bdc)
@@ -37,7 +37,7 @@ list_collections <- function(URL, ...) {
 #' @param ...           a \code{list} Parameters to httr::GET function.
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #'  wlts_bdc <- "https://brazildatacube.dpi.inpe.br/wlts/"
 #'
 #'  describe_collection(wlts_bdc, "deter_amazonia_legal")
@@ -83,11 +83,13 @@ describe_collection <- function(URL, collection_id, ...) {
 #'  returned.
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #'  wlts_bdc <- "https://brazildatacube.dpi.inpe.br/wlts/"
 #'
-#'  get_trajectory(wlts_bdc, latitude = c(-12, -11.01), longitude = c(-54, -54),
-#'                collections = "mapbiomas5_amazonia")
+#'  get_trajectory(wlts_bdc,
+#'                 latitude = c(-12, -11.01),
+#'                 longitude = c(-54, -54),
+#'                 collections = "mapbiomas5_amazonia")
 #'
 #'  # date interval
 #'  get_trajectory(URL        = wlts_bdc,

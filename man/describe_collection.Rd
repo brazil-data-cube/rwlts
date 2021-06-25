@@ -21,7 +21,7 @@ a named \code{list} with the metadata of data collection.
 Retrieves the metadata of a given data collection.
 }
 \examples{
-\donttest{
+\dontrun{
  wlts_bdc <- "https://brazildatacube.dpi.inpe.br/wlts/"
 
  describe_collection(wlts_bdc, "deter_amazonia_legal")
