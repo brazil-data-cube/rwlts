@@ -1,11 +1,11 @@
-#' @title Alluvial Plot
+#' @title Sankey Plot
 #'
-#' @description Visualization method based on the alluvial graph. In which the
+#' @description Visualization method based on the sankey graph. In which the
 #' changes between each class are presented on the time axis.
 #'
-#' @param wtls_tibble   a \code{tibble} object from class \code{wlts}.
-#' @param show_labels   a \code{logical} parameter, if true, is added the number
-#' of points on each bar.
+#' @param wtls_tibble           a \code{tibble} object from class \code{wlts}.
+#' @param show_count_transition a \code{logical} parameter, if true, is added
+#' the number of points on each bar. The default value is FALSE.
 #'
 #' @examples
 #' \donttest{
@@ -21,13 +21,13 @@
 #'                      config = httr::add_headers("x-api-key" = "BDC-KEY"))
 #'
 #'
-#'  plot_alluvial(wlts_tibble)
+#'  plot_sankey(wlts_tibble)
 #' }
 #'
 #' @return a \code{gg} object from ggplot2 package.
 #'
 #' @export
-plot_alluvial <- function(wtls_tibble, show_labels = FALSE) {
+plot_sankey <- function(wtls_tibble, show_count_transition = FALSE) {
 
   if (!inherits(wtls_tibble, "wlts"))
     stop(paste("The given object does not correspond to a time trajectory.",
@@ -58,7 +58,7 @@ plot_alluvial <- function(wtls_tibble, show_labels = FALSE) {
     ggplot2::scale_y_continuous(expand = c(0, 0)) +
     ggplot2::theme(legend.position = "bottom")
 
-  if (show_labels)
+  if (show_count_transition)
     g <- g + ggplot2::geom_text(stat = "stratum",
                                 ggplot2::aes_string(label = "n_points"))
 
