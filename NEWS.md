@@ -1,3 +1,9 @@
+# Version 0.6.0 (2021-09-03)
+
+- Add Sankey Plot
+- Add Drone integration
+- Update documentation
+
 # Version 0.4.0-0 (2020-12-14)
 
 - Base documentation;
