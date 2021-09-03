@@ -22,7 +22,6 @@ steps:
   when:
     event:
     - push
-    - pull_request
 
 - name: discord-notify
   image: brazildatacube/bdc-drone-discord
