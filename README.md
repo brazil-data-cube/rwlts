@@ -9,11 +9,11 @@ R Client Library for Web Land Trajectory Service (WLTS)
 
 [![Software
 License](https://img.shields.io/badge/license-MIT-green)](https://github.com/brazil-data-cube/rstac/blob/master/LICENSE)
-[![Travis build
-status](https://api.travis-ci.com/OldLipe/rwlts.svg?)](https://travis-ci.com/OldLipe/rwlts)
-[![codecov](https://codecov.io/gh/OldLipe/rwlts/branch/main/graph/badge.svg?)](https://codecov.io/gh/OldLipe/rwlts)
+[![Build
+Status](https://drone.dpi.inpe.br/api/badges/brazil-data-cube/rwlts/status.svg)](https://drone.dpi.inpe.br/brazil-data-cube/rwlts)
+[![codecov](https://codecov.io/gh/brazil-data-cube/rwlts/branch/main/graph/badge.svg?token=6WTJI6K93Y)](https://codecov.io/gh/brazil-data-cube/rwlts)
 [![Software Life
-Cycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+Cycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Join us at
 Discord](https://img.shields.io/discord/689541907621085198?logo=discord&logoColor=ffffff&color=7389D8)](https://discord.com/channels/689541907621085198#)
 <!-- badges: end -->
@@ -77,7 +77,7 @@ library(rwlts)
 `rwlts` implements the following WLTS operations:
 
 | **WLTS** operations     | `rwlts` functions                          |
-| :---------------------- | :----------------------------------------- |
+|:------------------------|:-------------------------------------------|
 | `/list_collections`     | `list_collections(URL,)`                   |
 | `/describe_collections` | `describe_collection(URL, collection_id)`  |
 | `/trajectory`           | `get_trajectory(URL, latitude, longitude)` |
@@ -225,8 +225,8 @@ get_trajectory(wlts_bdc,
 The `get_trajectory` function returns a `list` of class `wlts`. This
 object contains the `query` and `result` attributes. The `query`
 attribute stores the query performed to retrieve the data. By default,
-it will be `NULL`. For this information to be stored, the `query_info =
-TRUE` parameter is required. For example:
+it will be `NULL`. For this information to be stored, the
+`query_info = TRUE` parameter is required. For example:
 
 ``` r
 get_trajectory(wlts_bdc, 
@@ -239,17 +239,17 @@ get_trajectory(wlts_bdc,
 The `result` attribute stores the retrieved trajectories. The data is
 stored in a `tibble` for easy manipulation, which has the columns:
 
-  - `class`: LULC class;
-  - `collection`: Data Collection;
-  - `date`: Time instants of the trajectory;
-  - `point_id`: ID of the point that was queried.
+-   `class`: LULC class;
+-   `collection`: Data Collection;
+-   `date`: Time instants of the trajectory;
+-   `point_id`: ID of the point that was queried.
 
 The `point_id` column of the result `tibble` is used in `rwlts` to
 identify the entry point. This ID is necessary since the
 `get_trajectory` function can be used with vectors as input. For
 example, the code below retrieves the trajectory of data from the
-`mapbiomas5_amazonia` collection for two points `(-54, -12)` and `(-54,
--11.01)`.
+`mapbiomas5_amazonia` collection for two points `(-54, -12)` and
+`(-54, -11.01)`.
 
 ``` r
 get_trajectory(wlts_bdc, 
