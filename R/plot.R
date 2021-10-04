@@ -1,5 +1,7 @@
 #' @title Sankey Plot
 #'
+#' @name plot.wlts
+#'
 #' @description Visualization method based on the sankey graph. In which the
 #' changes between each class are presented on the time axis.
 #'
@@ -21,21 +23,28 @@
 #'                      config = httr::add_headers("x-api-key" = "BDC-KEY"))
 #'
 #'
-#'  plot_sankey(wlts_tibble)
+#'  plot(wlts_tibble)
 #' }
 #'
 #' @return a \code{gg} object from ggplot2 package.
 #'
 #' @export
-plot_sankey <- function(wtls_tibble, show_count_transition = FALSE) {
-
-  if (!inherits(wtls_tibble, "wlts"))
-    stop(paste("The given object does not correspond to a time trajectory.",
-               "Please use the `get_trajectory` function."), .call = FALSE)
+plot.wlts <- function(wtls_tibble, type, ...) {
 
   if (is.null(wtls_tibble$result))
     stop(paste("The result provided is empty, please check your query."),
          .call = FALSE)
+
+  new_plot(wtls_tibble, type, ...)
+}
+
+new_plot <- function(wlts_tibble, type, ...) {
+
+  UseMethod("new_plot", type)
+}
+
+new_plot.alluvial <- function(wtls_tibble, type, ...,
+                                show_count_transition = FALSE) {
 
   traj_data_sankey <- wtls_tibble$result %>%
     dplyr::mutate(date = as.factor(as.numeric(date)),
@@ -66,4 +75,9 @@ plot_sankey <- function(wtls_tibble, show_count_transition = FALSE) {
     g <- g + ggplot2::facet_wrap(~ traj_data_sankey$collection)
 
   return(g)
+}
+
+
+new_plot.default <- function(wtls_tibble, type, ...) {
+  stop("error")
 }
