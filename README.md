@@ -9,7 +9,7 @@ R Client Library for Web Land Trajectory Service (WLTS)
 
 [![Software
 License](https://img.shields.io/badge/license-MIT-green)](https://github.com/brazil-data-cube/rstac/blob/master/LICENSE)
-<!-- [![Build Status](https://drone.dpi.inpe.br/api/badges/brazil-data-cube/rwlts/status.svg)](https://drone.dpi.inpe.br/brazil-data-cube/rwlts) -->
+[![Build Status](https://drone.dpi.inpe.br/api/badges/brazil-data-cube/rwlts/status.svg)](https://drone.dpi.inpe.br/brazil-data-cube/rwlts)
 [![codecov](https://codecov.io/gh/brazil-data-cube/rwlts/branch/main/graph/badge.svg?token=6WTJI6K93Y)](https://codecov.io/gh/brazil-data-cube/rwlts)
 [![Software Life
 Cycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
