@@ -1,43 +1,62 @@
-#' @title Sankey Plot
+#' @title Plots for rwlts package
 #'
-#' @description Visualization method based on the sankey graph. In which the
-#' changes between each class are presented on the time axis.
+#' @name plot.wlts
 #'
-#' @param wtls_tibble           a \code{tibble} object from class \code{wlts}.
-#' @param show_count_transition a \code{logical} parameter, if true, is added
-#' the number of points on each bar. The default value is FALSE.
+#' @description A set of visualization methods for trajectories extracted in
+#'  rwlts package.
+#'
+#' @param x    a \code{tibble} object from class \code{wlts}.
+#' @param type a \code{character} with the type of plot.
+#'  Nowadays, only the "alluvial" plot is supported. By default is "alluvial".
+#' @param ...         additional functions
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #'  wlts_bdc <- "https://brazildatacube.dpi.inpe.br/wlts/"
 #'
 #'  wlts_tibble <- get_trajectory(
 #'                      URL        = wlts_bdc,
 #'                      latitude    = c(-12, -11),
 #'                      longitude   = c(-54, -55),
-#'                      collections = "mapbiomas5_amazonia",
+#'                      collections = "mapbiomas_amazonia-v5",
 #'                      start_date  = "2015-07-01",
 #'                      end_date    = "2017-07-01",
 #'                      config = httr::add_headers("x-api-key" = "BDC-KEY"))
 #'
-#'
-#'  plot_sankey(wlts_tibble)
+#'  plot(wlts_tibble)
 #' }
 #'
 #' @return a \code{gg} object from ggplot2 package.
 #'
 #' @export
-plot_sankey <- function(wtls_tibble, show_count_transition = FALSE) {
+plot.wlts <- function(x, ..., type = "alluvial") {
 
-  if (!inherits(wtls_tibble, "wlts"))
-    stop(paste("The given object does not correspond to a time trajectory.",
-               "Please use the `get_trajectory` function."), .call = FALSE)
-
-  if (is.null(wtls_tibble$result))
+  if (is.null(x$result))
     stop(paste("The result provided is empty, please check your query."),
          .call = FALSE)
 
-  traj_data_sankey <- wtls_tibble$result %>%
+  if (!requireNamespace("ggplot2", quietly = TRUE)) {
+    stop(paste("ggplot2 required for this function to work.",
+               "Please install it."), call. = FALSE)
+  }
+
+  # dispatch for S3 methods
+  class(x) <- c(type, class(x))
+  plot(x, ...)
+}
+
+#' @rdname plot.wlts
+#' @param show_count  a \code{logical} parameter, if true, is added
+#' the number of points on each bar. The default value is FALSE.
+#' @export
+plot.alluvial <- function(x, ..., show_count = FALSE) {
+
+  if (!requireNamespace("ggalluvial", quietly = TRUE)) {
+    stop(paste("ggalluvial required for this function to work.",
+               "Please install it."), call. = FALSE)
+  }
+
+  traj_data_sankey <- x$result %>%
     dplyr::mutate(date = as.factor(as.numeric(date)),
                   class = as.factor(class)) %>%
     dplyr::arrange(date) %>%
@@ -58,11 +77,11 @@ plot_sankey <- function(wtls_tibble, show_count_transition = FALSE) {
     ggplot2::scale_y_continuous(expand = c(0, 0)) +
     ggplot2::theme(legend.position = "bottom")
 
-  if (show_count_transition)
+  if (show_count)
     g <- g + ggplot2::geom_text(stat = "stratum",
                                 ggplot2::aes_string(label = "n_points"))
 
-  if (length(unique(wtls_tibble$result$collection)) > 1)
+  if (length(unique(x$result$collection)) > 1)
     g <- g + ggplot2::facet_wrap(~ traj_data_sankey$collection)
 
   return(g)

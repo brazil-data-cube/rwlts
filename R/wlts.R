@@ -122,6 +122,9 @@ get_trajectory <- function(URL,
   if (any(!is.null(start_date) | !is.null(end_date)))
     .check_datetime(start_date, end_date)
 
+  if (length(collections) > 1)
+    collections <- paste(collections, collapse = ",")
+
   # build final url
   url_obj <- .build_url(URL, path  = "/trajectory",
                         query      = list(start_date, end_date, collections),

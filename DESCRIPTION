@@ -1,7 +1,7 @@
 Package: rwlts
 Type: Package
 Title: Web Land Trajectory Service R Client
-Version: 0.6.0
+Version: 0.8.0
 Authors@R:
     c(person("Brazil Data Cube Team",
             email = "brazildatacube@inpe.br",
@@ -15,14 +15,14 @@ Imports:
   httr,
   tibble,
   magrittr,
-  dplyr,
+  dplyr
+Suggests:
   ggplot2,
-  ggalluvial
+  ggalluvial,
+  covr,
+  vcr,
+  testthat
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
-Suggests:
-    covr,
-    vcr,
-    testthat
+RoxygenNote: 7.1.2
