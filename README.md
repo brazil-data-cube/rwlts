@@ -9,13 +9,13 @@ R Client Library for Web Land Trajectory Service (WLTS)
 
 [![Software
 License](https://img.shields.io/badge/license-MIT-green)](https://github.com/brazil-data-cube/rstac/blob/master/LICENSE)
-[![Build
-Status](https://drone.dpi.inpe.br/api/badges/brazil-data-cube/rwlts/status.svg)](https://drone.dpi.inpe.br/brazil-data-cube/rwlts)
+[![Build Status](https://drone.dpi.inpe.br/api/badges/brazil-data-cube/rwlts/status.svg)](https://drone.dpi.inpe.br/brazil-data-cube/rwlts)
 [![codecov](https://codecov.io/gh/brazil-data-cube/rwlts/branch/main/graph/badge.svg?token=6WTJI6K93Y)](https://codecov.io/gh/brazil-data-cube/rwlts)
 [![Software Life
 Cycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Join us at
 Discord](https://img.shields.io/discord/689541907621085198?logo=discord&logoColor=ffffff&color=7389D8)](https://discord.com/channels/689541907621085198#)
+
 <!-- badges: end -->
 
 # About
@@ -43,7 +43,7 @@ through files or web services. In addition, the data has different
 spatial and temporal resolutions and storage systems (raster or vector).
 
 In this context, the **W**eb **L**and **T**rajectory **S**ervice (WLTS)
-is a service that aims to facilitate the access to these vaapproach
+is a service that aims to facilitate the access to these approach
 consists of using a data model that defines a minimum set of temporal
 and spatial information to represent different sources and types of
 data, but with a focus on land use and land cover.
@@ -96,16 +96,17 @@ collections in WLTS service.
 wlts_bdc <- "https://brazildatacube.dpi.inpe.br/wlts/"
 
 list_collections(wlts_bdc)
-#>  [1] "terraclass_amazonia"       "deter_amazonia_legal"     
-#>  [3] "deter_cerrado"             "prodes_cerrado"           
-#>  [5] "prodes_amazonia_legal"     "ibge_cobertura_uso_terra" 
-#>  [7] "lapig_areas_pastagem"      "mapbiomas5_amazonia"      
-#>  [9] "mapbiomas5_cerrado"        "mapbiomas5_caatinga"      
-#> [11] "mapbiomas5_mata_atlantica" "mapbiomas5_pampa"         
-#> [13] "mapbiomas5_pantanal"
+#>  [1] "lapig_areas_pastagem"        "terraclass_amazonia"        
+#>  [3] "deter_amazonia_legal"        "deter_cerrado"              
+#>  [5] "ibge_cobertura_uso_terra"    "prodes_amazonia_legal"      
+#>  [7] "prodes_cerrado"              "mapbiomas_caatinga-v5"      
+#>  [9] "mapbiomas_cerrado-v5"        "mapbiomas_amazonia-v5"      
+#> [11] "terraclass_amazonia-v2"      "mapbiomas_pantanal-v5"      
+#> [13] "mapbiomas_pampa-v5"          "terraclass_cerrado"         
+#> [15] "mapbiomas_mata_atlantica-v5"
 ```
 
-### Describle Collection
+### Describe Collection
 
 Each collection returned by the WLTS service can be used for retrieving
 LULC trajectories. To get information about the collections, we use the
@@ -182,41 +183,33 @@ LULC trajectories can be extracted from collections. These LULC
 trajectories in WLTS services are associated with a point (lat, long) in
 geographic space. In `rwlts`, we can use the `get_trajectory` function
 to retrieve trajectories. For example, in the code below, the point
-`(-54, -12)` trajectory is retrieved from the `mapbiomas5_amazonia`
+`(-54, -12)` trajectory is retrieved from the `mapbiomas_amazonia-v5`
 collection.
 
 ``` r
 get_trajectory(wlts_bdc, 
                latitude = -12, 
                longitude = -54, 
-               collections = "mapbiomas5_amazonia")
+               collections = "mapbiomas_amazonia-v5",
+               config = httr::add_headers("x-api-key" = "change-me"))
 #> $query
 #> NULL
 #> 
 #> $result
-#> # A tibble: 20 x 4
-#>    class              collection          date  point_id
-#>    <chr>              <chr>               <chr>    <int>
-#>  1 Formação Florestal mapbiomas5_amazonia 2000         1
-#>  2 Formação Florestal mapbiomas5_amazonia 2001         1
-#>  3 Formação Florestal mapbiomas5_amazonia 2002         1
-#>  4 Formação Florestal mapbiomas5_amazonia 2003         1
-#>  5 Formação Florestal mapbiomas5_amazonia 2004         1
-#>  6 Formação Florestal mapbiomas5_amazonia 2005         1
-#>  7 Formação Florestal mapbiomas5_amazonia 2006         1
-#>  8 Formação Florestal mapbiomas5_amazonia 2007         1
-#>  9 Formação Florestal mapbiomas5_amazonia 2008         1
-#> 10 Formação Florestal mapbiomas5_amazonia 2009         1
-#> 11 Formação Florestal mapbiomas5_amazonia 2010         1
-#> 12 Formação Florestal mapbiomas5_amazonia 2011         1
-#> 13 Formação Florestal mapbiomas5_amazonia 2012         1
-#> 14 Formação Florestal mapbiomas5_amazonia 2013         1
-#> 15 Formação Florestal mapbiomas5_amazonia 2014         1
-#> 16 Formação Florestal mapbiomas5_amazonia 2015         1
-#> 17 Formação Florestal mapbiomas5_amazonia 2016         1
-#> 18 Formação Florestal mapbiomas5_amazonia 2017         1
-#> 19 Formação Florestal mapbiomas5_amazonia 2018         1
-#> 20 Formação Florestal mapbiomas5_amazonia 2019         1
+#> # A tibble: 35 × 4
+#>    class              collection            date  point_id
+#>    <chr>              <chr>                 <chr>    <int>
+#>  1 Formação Florestal mapbiomas_amazonia-v5 1985         1
+#>  2 Formação Florestal mapbiomas_amazonia-v5 1986         1
+#>  3 Formação Florestal mapbiomas_amazonia-v5 1987         1
+#>  4 Formação Florestal mapbiomas_amazonia-v5 1988         1
+#>  5 Formação Florestal mapbiomas_amazonia-v5 1989         1
+#>  6 Formação Florestal mapbiomas_amazonia-v5 1990         1
+#>  7 Formação Florestal mapbiomas_amazonia-v5 1991         1
+#>  8 Formação Florestal mapbiomas_amazonia-v5 1992         1
+#>  9 Formação Florestal mapbiomas_amazonia-v5 1993         1
+#> 10 Formação Florestal mapbiomas_amazonia-v5 1994         1
+#> # … with 25 more rows
 #> 
 #> attr(,"class")
 #> [1] "wlts"
@@ -232,8 +225,9 @@ it will be `NULL`. For this information to be stored, the
 get_trajectory(wlts_bdc, 
                latitude = -12, 
                longitude = -54, 
-               collections = "mapbiomas5_amazonia", 
-               query_info = TRUE)
+               collections = "mapbiomas_amazonia-v5",
+               query_info = TRUE,
+               config = httr::add_headers("x-api-key" = "change-me"))
 ```
 
 The `result` attribute stores the retrieved trajectories. The data is
@@ -248,32 +242,33 @@ The `point_id` column of the result `tibble` is used in `rwlts` to
 identify the entry point. This ID is necessary since the
 `get_trajectory` function can be used with vectors as input. For
 example, the code below retrieves the trajectory of data from the
-`mapbiomas5_amazonia` collection for two points `(-54, -12)` and
+`mapbiomas_amazonia-v5` collection for two points `(-54, -12)` and
 `(-54, -11.01)`.
 
 ``` r
 get_trajectory(wlts_bdc, 
                latitude = c(-12, -11.01), 
                longitude = c(-54, -54), 
-               collections = "mapbiomas5_amazonia")
+               collections = "mapbiomas_amazonia-v5",
+               config = httr::add_headers("x-api-key" = "change-me"))
 #> $query
 #> NULL
 #> 
 #> $result
-#> # A tibble: 40 x 4
-#>    class              collection          date  point_id
-#>    <chr>              <chr>               <chr>    <int>
-#>  1 Formação Florestal mapbiomas5_amazonia 2000         1
-#>  2 Formação Florestal mapbiomas5_amazonia 2001         1
-#>  3 Formação Florestal mapbiomas5_amazonia 2002         1
-#>  4 Formação Florestal mapbiomas5_amazonia 2003         1
-#>  5 Formação Florestal mapbiomas5_amazonia 2004         1
-#>  6 Formação Florestal mapbiomas5_amazonia 2005         1
-#>  7 Formação Florestal mapbiomas5_amazonia 2006         1
-#>  8 Formação Florestal mapbiomas5_amazonia 2007         1
-#>  9 Formação Florestal mapbiomas5_amazonia 2008         1
-#> 10 Formação Florestal mapbiomas5_amazonia 2009         1
-#> # … with 30 more rows
+#> # A tibble: 70 × 4
+#>    class              collection            date  point_id
+#>    <chr>              <chr>                 <chr>    <int>
+#>  1 Formação Florestal mapbiomas_amazonia-v5 1985         1
+#>  2 Formação Florestal mapbiomas_amazonia-v5 1986         1
+#>  3 Formação Florestal mapbiomas_amazonia-v5 1987         1
+#>  4 Formação Florestal mapbiomas_amazonia-v5 1988         1
+#>  5 Formação Florestal mapbiomas_amazonia-v5 1989         1
+#>  6 Formação Florestal mapbiomas_amazonia-v5 1990         1
+#>  7 Formação Florestal mapbiomas_amazonia-v5 1991         1
+#>  8 Formação Florestal mapbiomas_amazonia-v5 1992         1
+#>  9 Formação Florestal mapbiomas_amazonia-v5 1993         1
+#> 10 Formação Florestal mapbiomas_amazonia-v5 1994         1
+#> # … with 60 more rows
 #> 
 #> attr(,"class")
 #> [1] "wlts"
@@ -286,32 +281,33 @@ In addition to multiple point retrieval, the `get_trajectory` function
 allows multiple collections to be queried for the composition of the
 trajectory. To do this, in the `collections` parameter, the collections
 must be assigned. For example, data from the collections
-`mapbiomas5_amazonia` and `terraclass_amazonia` are retrieved in the
-code below.
+`mapbiomas_amazonia-v5` and `terraclass_amazonia-v2` are retrieved in
+the code below.
 
 ``` r
 get_trajectory(wlts_bdc, 
                latitude = c(-12, -11.01), 
                longitude = c(-54, -54), 
-               collections = "mapbiomas5_amazonia,terraclass_amazonia")
+               collections = c("mapbiomas_amazonia-v5", "terraclass_amazonia-v2"),
+               config = httr::add_headers("x-api-key" = "change-me"))
 #> $query
 #> NULL
 #> 
 #> $result
-#> # A tibble: 50 x 4
-#>    class              collection          date  point_id
-#>    <chr>              <chr>               <chr>    <int>
-#>  1 Formação Florestal mapbiomas5_amazonia 2000         1
-#>  2 Formação Florestal mapbiomas5_amazonia 2001         1
-#>  3 Formação Florestal mapbiomas5_amazonia 2002         1
-#>  4 Formação Florestal mapbiomas5_amazonia 2003         1
-#>  5 Formação Florestal mapbiomas5_amazonia 2004         1
-#>  6 Floresta           terraclass_amazonia 2004         1
-#>  7 Formação Florestal mapbiomas5_amazonia 2005         1
-#>  8 Formação Florestal mapbiomas5_amazonia 2006         1
-#>  9 Formação Florestal mapbiomas5_amazonia 2007         1
-#> 10 Formação Florestal mapbiomas5_amazonia 2008         1
-#> # … with 40 more rows
+#> # A tibble: 80 × 4
+#>    class              collection            date  point_id
+#>    <chr>              <chr>                 <chr>    <int>
+#>  1 Formação Florestal mapbiomas_amazonia-v5 1985         1
+#>  2 Formação Florestal mapbiomas_amazonia-v5 1986         1
+#>  3 Formação Florestal mapbiomas_amazonia-v5 1987         1
+#>  4 Formação Florestal mapbiomas_amazonia-v5 1988         1
+#>  5 Formação Florestal mapbiomas_amazonia-v5 1989         1
+#>  6 Formação Florestal mapbiomas_amazonia-v5 1990         1
+#>  7 Formação Florestal mapbiomas_amazonia-v5 1991         1
+#>  8 Formação Florestal mapbiomas_amazonia-v5 1992         1
+#>  9 Formação Florestal mapbiomas_amazonia-v5 1993         1
+#> 10 Formação Florestal mapbiomas_amazonia-v5 1994         1
+#> # … with 70 more rows
 #> 
 #> attr(,"class")
 #> [1] "wlts"
@@ -321,8 +317,8 @@ Finally, the `get_trajectory` function, through the `start_date` and
 `end_date` parameters, allows you to specify the time intervals used in
 the trajectory. To exemplify its use, in the code below, trajectories
 are retrieved for the points `(-54, -12)` and `(-54, -11.01)`, from the
-`mapbiomas5_amazonia` and `terraclass_amazonia` collections in the time
-interval `[2003-01-01, 2004-01-01]`.
+`mapbiomas_amazonia-v5` and `terraclass_amazonia-v2` collections in the
+time interval `[2003-01-01, 2004-01-01]`.
 
 ``` r
 get_trajectory(wlts_bdc, 
@@ -330,65 +326,51 @@ get_trajectory(wlts_bdc,
                longitude = c(-54, -54), 
                start_date = "2003-01-01",
                end_date = "2004-01-01",
-               collections = "mapbiomas5_amazonia,terraclass_amazonia")
+               collections = c("mapbiomas_amazonia-v5","terraclass_amazonia-v2"),
+               config = httr::add_headers("x-api-key" = "change-me"))
 #> $query
 #> NULL
 #> 
 #> $result
-#> # A tibble: 6 x 4
-#>   class              collection          date  point_id
-#>   <chr>              <chr>               <chr>    <int>
-#> 1 Formação Florestal mapbiomas5_amazonia 2003         1
-#> 2 Formação Florestal mapbiomas5_amazonia 2004         1
-#> 3 Floresta           terraclass_amazonia 2004         1
-#> 4 Formação Florestal mapbiomas5_amazonia 2003         2
-#> 5 Formação Florestal mapbiomas5_amazonia 2004         2
-#> 6 Floresta           terraclass_amazonia 2004         2
+#> # A tibble: 6 × 4
+#>   class                                collection             date  point_id
+#>   <chr>                                <chr>                  <chr>    <int>
+#> 1 Formação Florestal                   mapbiomas_amazonia-v5  2003         1
+#> 2 Formação Florestal                   mapbiomas_amazonia-v5  2004         1
+#> 3 Vegetação Natural Florestal Primária terraclass_amazonia-v2 2004         1
+#> 4 Formação Florestal                   mapbiomas_amazonia-v5  2003         2
+#> 5 Formação Florestal                   mapbiomas_amazonia-v5  2004         2
+#> 6 Vegetação Natural Florestal Primária terraclass_amazonia-v2 2004         2
 #> 
 #> attr(,"class")
 #> [1] "wlts"
 ```
 
-The `rwlts` uses the **httr** package to manage HTTP requests, allowing
-the use of tokens from the authorization protocols OAuth 1.0 or 2.0 as
-well as other configuration options. In the code below, we present an
-example of how to provide a parameter token on a HTTP request.
-
-``` r
-my_token <- "..."
-
-get_trajectory(wlts_bdc, 
-               latitude = c(-12, -11.01), 
-               longitude = c(-54, -54), 
-               collections = "mapbiomas5_amazonia,terraclass_amazonia",
-               config = httr::add_headers("x-api-key" = my_token))
-```
-
-### Sankey plot
+### Alluvial plot
 
 To visualize the trajectories and fully understand their time dynamics,
-the `rwlts` package implements the Sankey-based visualization method. To
-create this plot, use the `plot_sankey` function, as shown in the
-example below:
+the `rwlts` package implements the Alluvial-based visualization method.
+To create this plot, use the `plot` function, as shown in the example
+below:
 
 ``` r
 # import data from package
 data("mt_500_mapbiomas_cerrado")
 
-plot_sankey(mt_500_mapbiomas_cerrado)
+plot(mt_500_mapbiomas_cerrado)
 ```
 
-<img src="inst/extdata/img/README-unnamed-chunk-13-1.png" width="100%" />
+<img src="inst/extdata/img/README-unnamed-chunk-12-1.png" width="100%" />
 
 Besides, you can fully customize the returned plot. This customization
-is possible since the `plot_sankey` function returns a ggplot2 object.
+is possible since the `plot` function returns a ggplot2 object.
 
 ``` r
 library(ggplot2)
 library(ggalluvial) # use to create plot
 library(cowplot)    # use different theme
 
-plot_sankey(mt_500_mapbiomas_cerrado, show_count_transition = TRUE) + 
+plot(mt_500_mapbiomas_cerrado, show_count = TRUE) + 
   cowplot::theme_minimal_hgrid() + 
   labs(title = "Changes in Primavera do Leste (2004-2014)",
        x = "Timeline",
@@ -408,7 +390,7 @@ plot_sankey(mt_500_mapbiomas_cerrado, show_count_transition = TRUE) +
                                "Soja"))
 ```
 
-<img src="inst/extdata/img/README-unnamed-chunk-14-1.png" width="100%" />
+<img src="inst/extdata/img/README-unnamed-chunk-13-1.png" width="100%" />
 
 > The numbers inside each bar correspond to the quantity of points
 > extracted in each year. You can see that according to the change of
