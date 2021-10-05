@@ -30,7 +30,4 @@
 NULL
 
 #' @importFrom dplyr mutate arrange ungroup group_by
-#' @importFrom ggplot2 ggplot aes_string scale_y_continuous theme facet_wrap
-#' geom_text stat
-#' @importFrom ggalluvial geom_flow geom_stratum
 NULL
